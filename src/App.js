@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Card, CardGrid, Container, Header } from "./Elements";
 import "./App.css";
@@ -19,6 +19,8 @@ import green from "./green.png";
 */ 
 
 function App() {
+  const [ value, setValue ] = useState(0);
+
   return (
     <motion.div 
       initial={{ 
@@ -41,6 +43,13 @@ function App() {
       </Header>
       <Container>
         <h2>Super Cool</h2>
+        <input 
+          type="range"
+          min="-100"
+          max="100"
+          value={value}
+          onChange={e => setValue(e.target.value)}
+        />
         <CardGrid>
           <Card style={{ background: "var(--purp)" }}>
             <h3>Some card</h3>
