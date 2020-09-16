@@ -42,7 +42,9 @@ function App() {
         <h1>Header</h1>
       </Header>
       <Container>
-        <h2>Super Cool</h2>
+        <motion.h2
+          animate={{ x: value * 5 + "px" }}
+        >Super Cool</motion.h2>
         <input 
           type="range"
           min="-100"
