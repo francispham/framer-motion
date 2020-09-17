@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import "./App.css";
 import Menu from "./Menu";
 import Modal from "./Modal";
-import { Card, CardGrid, Container, Header } from "./Elements";
+import { Card, CardGrid, Container, Header, Button } from "./Elements";
 
 import blue from "./blue.png";
 import purp from "./purp.png";
@@ -54,8 +54,8 @@ function App() {
             x: value * 5 + "px" 
           }}
         >Super Cool</motion.h2>
-        <button onClick={() => setToggle(preValue => preValue ? 0 : 1)}>Toggle</button>
-        <button onClick={() => setOpen(true)}>Open</button>
+        <Button onClick={() => setToggle(preValue => preValue ? 0 : 1)}>Toggle</Button>
+        <Button onClick={() => setOpen(true)}>Open</Button>
         <input 
           type="range"
           min="-100"

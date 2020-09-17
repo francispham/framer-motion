@@ -1,6 +1,8 @@
 import React from 'react'
 import { AnimatePresence, motion } from 'framer-motion';
 
+import { Button } from './Elements';
+
 const Modal = ({ isOpened, setOpen, children }) => {
   return (
     <AnimatePresence>
@@ -21,7 +23,7 @@ const Modal = ({ isOpened, setOpen, children }) => {
             animate={{ y: 0 }}
             exit={{ y: 30 }}
           >
-            <button onClick={() => setOpen(false)}>Close</button>
+            <Button onClick={() => setOpen(false)}>Close</Button>
             {children}
           </motion.div>
         </motion.div>

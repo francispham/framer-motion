@@ -41,3 +41,22 @@ export const Card = styled.div`
     width: 100%;
   }
 `;
+
+export const Button = styled.button`
+  border: none;
+  margin: 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  border-radius: 4px;
+  padding: 10px 40px;
+  display: inline-block;
+  color: var(--trueBlack);
+  text-transform: uppercase;
+  background: var(--lightBut);
+  box-shadow: 0 2px 10px rgba(50, 50, 73, 0.2),
+  0 37.5px 75px -5px rgba(0, 0, 0, 0.1);
+  
+  &:hover {
+    background: var(--strongBut);
+  }
+`;
