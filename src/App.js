@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Card, CardGrid, Container, Header } from "./Elements";
+
 import "./App.css";
 import Menu from "./Menu";
+import Modal from "./Modal";
+import { Card, CardGrid, Container, Header } from "./Elements";
+
 import blue from "./blue.png";
 import purp from "./purp.png";
 import black from "./black.png";
 import green from "./green.png";
+import comingsoon from "./coming-soon.png";
 
 /*
 * * NOTE:
@@ -21,6 +25,7 @@ import green from "./green.png";
 function App() {
   const [ value, setValue ] = useState(0);
   const [ isToggled, setToggle ] = useState(1);
+  const [ isOpened, setOpen ] = useState(false);
 
   return (
     <motion.div 
@@ -50,6 +55,7 @@ function App() {
           }}
         >Super Cool</motion.h2>
         <button onClick={() => setToggle(preValue => preValue ? 0 : 1)}>Toggle</button>
+        <button onClick={() => setOpen(true)}>Open</button>
         <input 
           type="range"
           min="-100"
@@ -57,6 +63,12 @@ function App() {
           value={value}
           onChange={e => setValue(e.target.value)}
         />
+        <Modal isOpened={isOpened} setOpen = {setOpen}>
+          <Card style={{ background: "var(--white)", color: "var(--soon)" }}>
+            <h3>Modal</h3>
+            <img src={comingsoon} alt="purp" />
+          </Card>
+        </Modal>
         <CardGrid>
           <Card style={{ background: "var(--purp)" }}>
             <h3>Some card</h3>
