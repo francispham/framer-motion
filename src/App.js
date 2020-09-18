@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 import "./App.css";
+import Nav from "./Nav";
 import Menu from "./Menu";
 import Modal from "./Modal";
 import Accordion from "./Accordion";
@@ -27,6 +28,7 @@ function App() {
   const [ value, setValue ] = useState(0);
   const [ isToggled, setToggle ] = useState(1);
   const [ isOpened, setOpen ] = useState(false);
+  const [ isNavOpened, setNavOpen ] = useState(false);
 
   return (
     <motion.div
@@ -37,7 +39,8 @@ function App() {
       }}
     >
       <Header>
-        <Menu />
+        <Menu onClick={() => setNavOpen(true)} />
+        <Nav isNavOpened={isNavOpened} setNavOpen={setNavOpen} />
         <h1>Header</h1>
       </Header>
       <Container>
