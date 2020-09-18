@@ -6,8 +6,30 @@ import { Button } from './Elements';
 
 const variants = {
   open: { x: 0 },
-  close: { x: "-100%" }
+  close: { 
+    x: "-100%",
+    // 'delay' is required to see the Animation in children Components!!!
+    transition: {
+      delay: 0.5
+    }
+  }
 };
+
+const liVariants = {
+  open: { 
+    y: 0, 
+    opacity: 1,
+    // 'delay' is required to see the Animation in children Components!!!
+    transition: {
+      delay: 0.5
+    }
+  },
+  close: { y: -20, opacity: 0 }
+};
+
+const links = [
+  "one", "two", "three", "four"
+];
 
 const Nav = ({ isNavOpened, setNavOpen }) => {
   return (
@@ -19,18 +41,11 @@ const Nav = ({ isNavOpened, setNavOpen }) => {
     >
       <Button onClick={() => setNavOpen(false)}>Close</Button>
       <ul>
-        <li>
-          <a href="foo">ONE</a>
-        </li>
-        <li>
-          <a href="foo">TWO</a>
-        </li>
-        <li>
-          <a href="foo">THREE</a>
-        </li>
-        <li>
-          <a href="foo">FOUR</a>
-        </li>
+        {links.map(link => (
+          <motion.li variants={liVariants} key={link}>
+            <a href="foo">{link}</a>
+          </motion.li>
+        ))}
       </ul>
     </MenuNav>
   )
@@ -51,10 +66,16 @@ const MenuNav = styled(motion.nav)`
   }
   li {
     padding: 0;
-    margin: 0;
+    margin: 0 0 1rem;
     font-size: 2rem;
     a {
       color: var(--white);
+      text-decoration: none;
+      border-bottom: 2px transparent solid;
+      transition: 0.3s ease border;
+      &:hover {
+        border-bottom: 2px var(--blue) solid;
+      }
     }
   }
 `;
