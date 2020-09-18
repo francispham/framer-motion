@@ -1,11 +1,22 @@
-import React from 'react'
+import React from 'react';
+import { motion } from "framer-motion";
 import styled from 'styled-components';
 
 import { Button } from './Elements';
 
-const Nav = ({ setNavOpen }) => {
+const variants = {
+  open: { x: 0 },
+  close: { x: "-100%" }
+};
+
+const Nav = ({ isNavOpened, setNavOpen }) => {
   return (
-    <MenuNav>
+    <MenuNav 
+      variants={variants}
+      initial="close"
+      animate={ isNavOpened ? "open" : "close" }
+      transition={{ damping: 300 }}
+    >
       <Button onClick={() => setNavOpen(false)}>Close</Button>
       <ul>
         <li>
@@ -25,7 +36,7 @@ const Nav = ({ setNavOpen }) => {
   )
 };
 
-const MenuNav = styled.nav`
+const MenuNav = styled(motion.nav)`
   position: fixed;
   top: 0;
   left: 0;
