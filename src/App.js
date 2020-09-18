@@ -29,19 +29,11 @@ function App() {
   const [ isOpened, setOpen ] = useState(false);
 
   return (
-    <motion.div 
-      initial={{ 
-        opacity: 0,
-        x: 100,
-        y: 100,
-      }}
-      animate={{ 
-        opacity: 1,
-        x: 0,
-        y: 0,
-      }}
+    <motion.div
+      animate={{ opacity: [0, 1, 0, 1] }}
       transition={{ 
-        duration: 2
+        duration: 5,
+        time: [0, 0.2, 0.5, 1]
       }}
     >
       <Header>
