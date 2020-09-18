@@ -1,6 +1,11 @@
 import React, { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion';
 
+const variants = {
+  open: { opacity: 1, height: "auto" },
+  close: { opacity: 0, height: 0 }
+};
+
 const Accordion = () => {
   const [ isToggled, setToggle ] = useState(false);
   return (
@@ -10,10 +15,11 @@ const Accordion = () => {
       </h2>
       {isToggled && (
         <motion.div
+          variants={variants}
           style={{ overflow: "hidden" }}
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
+          initial="close"
+          animate="open"
+          exit="close"
         >
           <p>
             This is something inside the Accordion
