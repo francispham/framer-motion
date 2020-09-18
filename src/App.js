@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import "./App.css";
 import Menu from "./Menu";
 import Modal from "./Modal";
+import Accordion from "./Accordion";
 import { Card, CardGrid, Container, Header, Button } from "./Elements";
 
 import blue from "./blue.png";
@@ -69,6 +70,7 @@ function App() {
             <img src={comingsoon} alt="purp" />
           </Card>
         </Modal>
+        <Accordion />
         <CardGrid>
           <Card style={{ background: "var(--purp)" }}>
             <h3>Some card</h3>
