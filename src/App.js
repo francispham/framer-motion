@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 
 import "./App.css";
 import Nav from "./Nav";
+import NavTwo from "./NavTwo";
 import Menu from "./Menu";
 import Modal from "./Modal";
 import Accordion from "./Accordion";
@@ -29,20 +30,28 @@ function App() {
   const [ isToggled, setToggle ] = useState(1);
   const [ isOpened, setOpen ] = useState(false);
   const [ isNavOpened, setNavOpen ] = useState(false);
+  const [ isNavTwoOpened, setNavTwoOpen ] = useState(false);
 
   return (
     <motion.div
-      animate={{ opacity: [0, 1, 0, 1] }}
+      animate={{ opacity: [1, 0, 1] }}
       transition={{ 
-        duration: 5,
-        time: [0, 0.2, 0.5, 1]
+        duration: 1,
+        time: [0, 0.4, 0.6]
       }}
     >
       <Header>
-        <Menu onClick={() => setNavOpen(true)} />
-        <Nav isNavOpened={isNavOpened} setNavOpen={setNavOpen} />
-        <h1>Header</h1>
+        <div>
+          <Menu onClick={() => setNavOpen(true)} />
+          <h1>Nav</h1>
+        </div>
+        <div>
+          <h1>NavTwo</h1>
+          <Menu onClick={() => setNavTwoOpen(true)} />
+        </div>
       </Header>
+      <Nav isNavOpened={isNavOpened} setNavOpen={setNavOpen} />
+      <NavTwo isNavOpened={isNavTwoOpened} setNavOpen={setNavTwoOpen} />
       <Container>
         <motion.h2
           animate={{ 

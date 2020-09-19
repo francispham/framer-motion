@@ -1,18 +1,22 @@
 import styled from "styled-components";
 
 export const Header = styled.header`
-  background: var(--black);
-  color: white;
-  padding: 20px;
   display: flex;
-  > svg {
-    margin-right: 20px;
-  }
-  > * {
-    margin: 0;
-  }
-  h1 {
-    font-size: 1rem;
+  justify-content: space-between;
+  background: var(--black);
+  padding: 20px;
+  color: white;
+  div {
+    display: inherit;
+    > svg {
+      margin: 0 10px;
+    }
+    > * {
+      margin: 0;
+    }
+    h1 {
+      font-size: 1rem;
+    }
   }
 `;
 
