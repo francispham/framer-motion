@@ -76,11 +76,20 @@ function App() {
         </Modal>
         <Accordion />
         <CardGrid>
-          <Card style={{ background: "var(--purp)" }}>
+          <Card
+            // https://www.framer.com/api/motion/gestures/#hover
+            whileHover={{ scale: [1, .8, 1.2, 1.1] }}
+            onHoverEnd={() => console.log("Hover Has Ended")}
+            style={{ background: "var(--purp)" }}
+          >
             <h3>Some card</h3>
             <img src={purp} alt="purp" />
           </Card>
-          <Card style={{ background: "var(--blue)" }}>
+          <Card 
+            // https://www.framer.com/api/motion/gestures/#tap
+            whileTap={{ scale: 0.8 }}
+            style={{ background: "var(--blue)" }}
+          >
             <h3>Some card</h3>
             <img src={blue} alt="blue" />
           </Card>
