@@ -86,14 +86,23 @@ function App() {
             <img src={purp} alt="purp" />
           </Card>
           <Card 
-            // https://www.framer.com/api/motion/gestures/#tap
+            // https://www.framer.com/api/motion/gestures/#tap 
             whileTap={{ scale: 0.8 }}
+            // https://www.framer.com/api/motion/gestures/#drag
+            drag
             style={{ background: "var(--blue)" }}
           >
             <h3>Some card</h3>
             <img src={blue} alt="blue" />
           </Card>
-          <Card style={{ background: "var(--black)" }}>
+          <Card
+            drag="x"
+            dragConstraints={{
+              left: 0,
+              right: 0
+            }}
+            style={{ background: "var(--black)" }}
+          >
             <h3>Some card</h3>
             <img src={black} alt="black" />
           </Card>
