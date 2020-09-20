@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 
 import "./App.css";
 import Nav from "./Nav";
@@ -32,6 +32,11 @@ function App() {
   const [ isNavOpened, setNavOpen ] = useState(false);
   const [ isNavTwoOpened, setNavTwoOpen ] = useState(false);
 
+  // https://www.framer.com/api/motion/motionvalue/
+  const x = useMotionValue(0);
+  console.log('x:', x);
+  const opacity = useTransform(x, [-200, 0, 200], [0, 1, 0]);
+  // 'x' is the Value that we want work with!
   return (
     <motion.div
       animate={{ opacity: [1, 0, 1] }}
@@ -101,7 +106,11 @@ function App() {
               left: 0,
               right: 0
             }}
-            style={{ background: "var(--black)" }}
+            style={{ 
+              x,
+              opacity,
+              background: "var(--black)" 
+            }}
           >
             <h3>Some card</h3>
             <img src={black} alt="black" />
