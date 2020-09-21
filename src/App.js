@@ -5,9 +5,10 @@ import {
 
 import "./App.css";
 import Nav from "./Nav";
-import NavTwo from "./NavTwo";
 import Menu from "./Menu";
 import Modal from "./Modal";
+import NavTwo from "./NavTwo";
+import Squares from "./Squares";
 import Accordion from "./Accordion";
 import { Card, CardGrid, Container, Header, Button } from "./Elements";
 
@@ -63,6 +64,7 @@ function App() {
       <Nav isNavOpened={isNavOpened} setNavOpen={setNavOpen} />
       <NavTwo isNavOpened={isNavTwoOpened} setNavOpen={setNavTwoOpen} />
       <Container>
+        <Squares />
         <motion.h2
           animate={{ 
             opacity: isToggled,
