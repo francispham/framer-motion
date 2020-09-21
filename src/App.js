@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { 
+  motion, useMotionValue, useTransform, AnimatePresence 
+} from "framer-motion";
 
 import "./App.css";
 import Nav from "./Nav";
@@ -32,11 +34,14 @@ function App() {
   const [ isNavOpened, setNavOpen ] = useState(false);
   const [ isNavTwoOpened, setNavTwoOpen ] = useState(false);
   const [ isCardActive, setCardActive ] = useState(true);
+  const [ isCardActiveTwo, setCardActiveTwo ] = useState(true);
 
   // https://www.framer.com/api/motion/motionvalue/
-  const x = useMotionValue(0);
+  const x = useMotionValue(0);   // 'x' is the Value that we want work with!
   const opacity = useTransform(x, [-200, 0, 200], [0, 1, 0]);
-  // 'x' is the Value that we want work with!
+  const xx = useMotionValue(0);
+  const opacity2 = useTransform(xx, [-200, 0, 200], [0, 1, 0]);
+
   return (
     <motion.div
       animate={{ opacity: [1, 0, 1] }}
@@ -100,6 +105,7 @@ function App() {
             <h3>Gestures Card - Tap & Drag</h3>
             <img src={blue} alt="blue" />
           </Card>
+          
           {isCardActive && (
             <Card
               onDragEnd={(event, info) => {
@@ -124,6 +130,40 @@ function App() {
               <img src={black} alt="black" />
             </Card>
           )}
+          <AnimatePresence>
+            {isCardActiveTwo && (
+              <motion.div 
+                exit={{ height: 0, overflow: "hidden", opacity: 0 }}
+                transition={{
+                  opacity: {
+                    duration: 0
+                  }
+                }}
+              >
+                <Card
+                  onDragEnd={(event, info) => {
+                    if (Math.abs(info.point.x) > 200) {
+                      setCardActiveTwo(false);
+                    }
+                  }}
+                  drag="x"
+                  dragConstraints={{
+                    left: 0,
+                    right: 0
+                  }}
+                  style={{ 
+                    xx,
+                    opacity2,
+                    background: "var(--red)" 
+                  }}
+                >
+                  <h3>Feature Card - Drag To Dismiss with AnimatePresence</h3>
+                  <img src={green} alt="green" />
+                </Card>
+              </motion.div>
+            )}
+          </AnimatePresence>
+          
           <Card style={{ background: "var(--green)" }}>
             <h3>Some card</h3>
             <img src={green} alt="green" />
