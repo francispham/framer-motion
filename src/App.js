@@ -31,10 +31,10 @@ function App() {
   const [ isOpened, setOpen ] = useState(false);
   const [ isNavOpened, setNavOpen ] = useState(false);
   const [ isNavTwoOpened, setNavTwoOpen ] = useState(false);
+  const [ isCardActive, setCardActive ] = useState(true);
 
   // https://www.framer.com/api/motion/motionvalue/
   const x = useMotionValue(0);
-  console.log('x:', x);
   const opacity = useTransform(x, [-200, 0, 200], [0, 1, 0]);
   // 'x' is the Value that we want work with!
   return (
@@ -87,7 +87,7 @@ function App() {
             onHoverEnd={() => console.log("Hover Has Ended")}
             style={{ background: "var(--purp)" }}
           >
-            <h3>Some card</h3>
+            <h3>Gestures Card - Hover</h3>
             <img src={purp} alt="purp" />
           </Card>
           <Card 
@@ -97,24 +97,33 @@ function App() {
             drag
             style={{ background: "var(--blue)" }}
           >
-            <h3>Some card</h3>
+            <h3>Gestures Card - Tap & Drag</h3>
             <img src={blue} alt="blue" />
           </Card>
-          <Card
-            drag="x"
-            dragConstraints={{
-              left: 0,
-              right: 0
-            }}
-            style={{ 
-              x,
-              opacity,
-              background: "var(--black)" 
-            }}
-          >
-            <h3>Some card</h3>
-            <img src={black} alt="black" />
-          </Card>
+          {isCardActive && (
+            <Card
+              onDragEnd={(event, info) => {
+                console.log('event:', event);
+                console.log(info.point.x);
+                if (info.point.x > 200) {
+                  setCardActive(false);
+                }
+              }}
+              drag="x"
+              dragConstraints={{
+                left: 0,
+                right: 0
+              }}
+              style={{ 
+                x,
+                opacity,
+                background: "var(--black)" 
+              }}
+            >
+              <h3>Feature Card - Drag To Dismiss</h3>
+              <img src={black} alt="black" />
+            </Card>
+          )}
           <Card style={{ background: "var(--green)" }}>
             <h3>Some card</h3>
             <img src={green} alt="green" />
