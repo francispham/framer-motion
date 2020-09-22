@@ -11,18 +11,18 @@ const COLORS = [
 ];
 
 const variants = {
-  enter: {
-    x: 1000,
-    opacity: 0
-  },
+  enter: direction => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0
+  }),
   center: {
     x: 0,
     opacity: 1
   },
-  exit: {
-    x: -1000,
-    opacity: 0
-  }
+  exit: direction => ({
+      x: direction > 0 ? -1000 : 1000,
+      opacity: 0
+  }),
 }
 
 const Slideshow = () => {
@@ -34,9 +34,10 @@ const Slideshow = () => {
 
   return (
     <div style={{ position: "relative", height: 400 }}>
-      <AnimatePresence>
+       <AnimatePresence custom={direction}>{/* custom will get info into motion.div Tag */}
         <motion.div
           key={page} // The Animation Flow starts with key changes
+          custom={direction}
           variants={variants}
           initial="enter"
           animate="center"
