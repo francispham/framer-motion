@@ -10,17 +10,26 @@ const COLORS = [
 ];
 
 const Slideshow = () => {
-  const index = 0;
+  const [ [page, direction], setPage ] = useState([0, 0]);
+  const paginate = direction => setPage([page + direction, direction]);
+  
+  const index = page;
 
   return (
     <div>
       <AnimatePresence>
         <motion.div
+          key={page}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={1} // values are between 0 and 1
           onDragEnd={(e, { offset, velocity }) => {
             console.log('offset.x:', offset.x);
+            if (offset.x > 400) {
+              paginate(-1);
+            } else  if (offset.x < -400) {
+              paginate(1);
+            }
 
           }}
           style={{
