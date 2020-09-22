@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { wrap } from '@popmotion/popcorn';
 
 const COLORS = [
   "var(--red)",
@@ -13,7 +14,8 @@ const Slideshow = () => {
   const [ [page, direction], setPage ] = useState([0, 0]);
   const paginate = direction => setPage([page + direction, direction]);
   
-  const index = page;
+  // https://popmotion.io/popcorn/api/wrap/
+  const index = wrap(0, COLORS.length,page);
 
   return (
     <div>
@@ -24,7 +26,6 @@ const Slideshow = () => {
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={1} // values are between 0 and 1
           onDragEnd={(e, { offset, velocity }) => {
-            console.log('offset.x:', offset.x);
             if (offset.x > 400) {
               paginate(-1);
             } else  if (offset.x < -400) {
