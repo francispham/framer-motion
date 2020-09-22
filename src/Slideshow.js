@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { wrap } from '@popmotion/popcorn';
 
+import { Button } from "./Elements";
+
 const COLORS = [
   "var(--red)",
   "var(--blue)",
@@ -62,6 +64,18 @@ const Slideshow = () => {
           }}
         />
       </AnimatePresence>
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "1fr 3fr 1fr",
+        zIndex: 10, 
+        top: 150,
+        position: "absolute", 
+        width: 600 
+      }}>
+        <Button onClick={() => paginate(-1)}>{"<"}</Button>
+        <div></div>
+        <Button onClick={() => paginate(1)}>{">"}</Button>
+      </div>
     </div>
   );
 };
