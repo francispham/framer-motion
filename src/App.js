@@ -10,6 +10,7 @@ import Modal from "./Modal";
 import NavTwo from "./NavTwo";
 import Squares from "./Squares";
 import Accordion from "./Accordion";
+import Slideshow from "./Slideshow";
 import { Card, CardGrid, Container, Header, Button } from "./Elements";
 
 import blue from "./blue.png";
@@ -64,6 +65,7 @@ function App() {
       <Nav isNavOpened={isNavOpened} setNavOpen={setNavOpen} />
       <NavTwo isNavOpened={isNavTwoOpened} setNavOpen={setNavTwoOpen} />
       <Container>
+        <Slideshow />
         <Squares />
         <motion.h2
           animate={{ 
