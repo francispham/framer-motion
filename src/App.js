@@ -40,6 +40,7 @@ function App() {
 
   return (
     <motion.div
+      initial={{ x: -100 }}
       animate={{ opacity: [1, 0, 1] }}
       transition={{ 
         duration: 1,

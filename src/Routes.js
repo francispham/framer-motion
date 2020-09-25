@@ -27,7 +27,7 @@ const Routes = () => {
       </Header>
       <Nav isNavOpened={isNavOpened} setNavOpen={setNavOpen} />
       <NavTwo isNavOpened={isNavTwoOpened} setNavOpen={setNavTwoOpen} />
-      <AnimatePresence>
+      <AnimatePresence exitBeforeEnter>
         <Switch>
           <Route exact path="/" component={App} />
           <Route exact path="/Home" component={Home} />
