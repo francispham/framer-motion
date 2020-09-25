@@ -23,7 +23,9 @@ const Squares = () => {
         <motion.div
           key={color}
           // https://www.framer.com/api/motion/guide-upgrade-to-framer-motion-2/
-          layoutTransition={{
+          layout 
+          transition={{
+            duration: 0.5,
             damping: 100,
             stiffness: 10
           }}
