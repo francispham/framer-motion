@@ -40,12 +40,13 @@ function App() {
 
   return (
     <motion.div
-      initial={{ x: -100 }}
+      initial={{ opacity: 0, x: -100 }}
       animate={{ opacity: [1, 0, 1] }}
       transition={{ 
-        duration: 1,
-        time: [0, 0.4, 0.6]
+        duration: 0.5,
+        time: [0.3, 0.4, 0.6]
       }}
+      exit={{ opacity: 0, x: 100 }}
     >
       <Container>
         <h1>APP</h1>

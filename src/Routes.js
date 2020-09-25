@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { Route, Switch, Link, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
 import Nav from "./Nav";
@@ -12,9 +12,11 @@ import { Header } from "./Elements";
 const Routes = () => {
   const [ isNavOpened, setNavOpen ] = useState(false);
   const [ isNavTwoOpened, setNavTwoOpen ] = useState(false);
-  
+  let location = useLocation();
+  console.log('location:', location);
+
   return (
-    <Router>
+    <>
       <Header>
         <div>
           <Menu onClick={() => setNavOpen(true)} />
@@ -28,12 +30,12 @@ const Routes = () => {
       <Nav isNavOpened={isNavOpened} setNavOpen={setNavOpen} />
       <NavTwo isNavOpened={isNavTwoOpened} setNavOpen={setNavTwoOpen} />
       <AnimatePresence exitBeforeEnter>
-        <Switch>
+        <Switch location={location} key={location.pathname}>
           <Route exact path="/" component={App} />
           <Route exact path="/Home" component={Home} />
         </Switch>
       </AnimatePresence>
-    </Router>
+    </>
   );
 };
 
