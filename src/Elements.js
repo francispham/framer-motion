@@ -1,22 +1,22 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-export const Header = styled.header`
+export const Header = styled(motion.header)`
   display: flex;
   justify-content: space-between;
   background: var(--black);
   padding: 20px;
-  color: white;
   div {
     display: inherit;
     > svg {
-      margin: 0 10px;
-    }
-    > * {
       margin: 0;
     }
-    h1 {
-      font-size: 1rem;
+    > * {
+      color: white;
+      margin: 0 1rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
     }
   }
 `;
@@ -63,5 +63,35 @@ export const Button = styled.button`
   
   &:hover {
     background: var(--strongBut);
+  }
+`;
+
+export const MenuNav = styled(motion.nav)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--black);
+  padding: 40px;
+  z-index:99;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    padding: 0;
+    margin: 0 0 1rem;
+    font-size: 2rem;
+    a {
+      color: var(--white);
+      text-decoration: none;
+      border-bottom: 2px transparent solid;
+      transition: 0.3s ease border;
+      &:hover {
+        border-bottom: 2px var(--blue) solid;
+      }
+    }
   }
 `;

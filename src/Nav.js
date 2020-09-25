@@ -1,8 +1,7 @@
 import React from 'react';
 import { motion } from "framer-motion";
-import styled from 'styled-components';
 
-import { Button } from './Elements';
+import { Button, MenuNav } from './Elements';
 
 const variants = {
   open: { x: 0 },
@@ -50,34 +49,5 @@ const Nav = ({ isNavOpened, setNavOpen }) => {
     </MenuNav>
   )
 };
-
-const MenuNav = styled(motion.nav)`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: var(--black);
-  padding: 40px;
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  li {
-    padding: 0;
-    margin: 0 0 1rem;
-    font-size: 2rem;
-    a {
-      color: var(--white);
-      text-decoration: none;
-      border-bottom: 2px transparent solid;
-      transition: 0.3s ease border;
-      &:hover {
-        border-bottom: 2px var(--blue) solid;
-      }
-    }
-  }
-`;
 
 export default Nav;
