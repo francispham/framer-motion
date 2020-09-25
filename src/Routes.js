@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
 import Nav from "./Nav";
 import App from "./App";
@@ -26,10 +27,12 @@ const Routes = () => {
       </Header>
       <Nav isNavOpened={isNavOpened} setNavOpen={setNavOpen} />
       <NavTwo isNavOpened={isNavTwoOpened} setNavOpen={setNavTwoOpen} />
-      <Switch>
-        <Route exact path="/" component={App} />
-        <Route exact path="/Home" component={Home} />
-      </Switch>
+      <AnimatePresence>
+        <Switch>
+          <Route exact path="/" component={App} />
+          <Route exact path="/Home" component={Home} />
+        </Switch>
+      </AnimatePresence>
     </Router>
   );
 };
