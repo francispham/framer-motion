@@ -142,7 +142,7 @@ function App() {
                   style={{ 
                     xx,
                     opacity2,
-                    background: "var(--red)" 
+                    background: "var(--green)" 
                   }}
                 >
                   <h3>Feature Card - Drag To Dismiss with AnimatePresence</h3>
@@ -151,11 +151,6 @@ function App() {
               </motion.div>
             )}
           </AnimatePresence>
-          
-          <Card style={{ background: "var(--green)" }}>
-            <h3>Some card</h3>
-            <img src={green} alt="green" />
-          </Card>
         </CardGrid>
       </Container>
     </motion.div>
